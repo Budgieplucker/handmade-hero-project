@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178
+VisualStudioVersion = 17.12.35707.178 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "handmade", "handmade.exe", "{DA24D48F-8BB5-4CBE-9D23-D702DD6A0AD5}"
+Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "handmade", "handmade.exe", "{2210E838-CF96-409B-A7AF-79A3B340F361}"
 	ProjectSection(DebuggerProjectSystem) = preProject
 		PortSupplier = 00000000-0000-0000-0000-000000000000
 		Executable = W:\handmade-hero-project\build\handmade.exe
@@ -22,7 +22,7 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DA24D48F-8BB5-4CBE-9D23-D702DD6A0AD5}.Release|x64.ActiveCfg = Release|x64
+		{2210E838-CF96-409B-A7AF-79A3B340F361}.Release|x64.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
