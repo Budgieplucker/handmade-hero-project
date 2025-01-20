@@ -20,11 +20,16 @@ LRESULT CALLBACK MainWindowCallback(
         case WM_DESTROY:
         {
             OutputDebugStringA("WM_DESTROY\n");
+            PostQuitMessage(0);
         } break;
 
         case WM_CLOSE:
         {
             OutputDebugStringA("WM_CLOSE\n");
+            if(MessageBoxA(Window, "Are you sure you want to exit?", "Handmade Hero", MB_OKCANCEL) == IDOK)
+            {
+                DestroyWindow(Window);
+            }
         } break;
         
         case WM_ACTIVATEAPP:
