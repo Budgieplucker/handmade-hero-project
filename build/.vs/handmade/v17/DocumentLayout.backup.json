@@ -1,13 +1,16 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Alien\\Documents\\Programming\\Projects\\handmade\\build\\",
+  "WorkspaceRootPath": "W:\\handmade-hero-project\\build\\",
   "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|W:\\handmade-hero-project\\src\\handmade.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
     {
       "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|handmade||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0E5B49AD-31C5-412E-AB04-8F88262B430D}|handmade.exe|C:\\Users\\Alien\\Documents\\Programming\\Projects\\handmade\\build\\handmade.exe||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|919d7fa1-9ce2-4d9f-896d-e7b38d47e562",
-      "RelativeMoniker": "D:0:0:{0E5B49AD-31C5-412E-AB04-8F88262B430D}|handmade.exe|solutionrelative:handmade.exe||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|919d7fa1-9ce2-4d9f-896d-e7b38d47e562"
+      "AbsoluteMoniker": "D:0:0:{DA24D48F-8BB5-4CBE-9D23-D702DD6A0AD5}|handmade.exe|W:\\handmade-hero-project\\build\\handmade.exe||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|919d7fa1-9ce2-4d9f-896d-e7b38d47e562",
+      "RelativeMoniker": "D:0:0:{DA24D48F-8BB5-4CBE-9D23-D702DD6A0AD5}|handmade.exe|solutionrelative:handmade.exe||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|919d7fa1-9ce2-4d9f-896d-e7b38d47e562"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,13 +25,26 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "handmade.cpp",
+              "DocumentMoniker": "W:\\handmade-hero-project\\src\\handmade.cpp",
+              "RelativeDocumentMoniker": "..\\src\\handmade.cpp",
+              "ToolTip": "W:\\handmade-hero-project\\src\\handmade.cpp",
+              "RelativeToolTip": "..\\src\\handmade.cpp",
+              "ViewState": "AgIAAGUAAAAAAAAAAAAlwGkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-19T23:53:50.401Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "handmade",
-              "DocumentMoniker": "C:\\Users\\Alien\\Documents\\Programming\\Projects\\handmade\\build\\handmade.exe",
+              "DocumentMoniker": "W:\\handmade-hero-project\\build\\handmade.exe",
               "RelativeDocumentMoniker": "handmade.exe",
-              "ToolTip": "C:\\Users\\Alien\\Documents\\Programming\\Projects\\handmade\\build\\handmade.exe",
+              "ToolTip": "W:\\handmade-hero-project\\build\\handmade.exe",
               "RelativeToolTip": "handmade.exe",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-01-19T04:40:13.365Z",
+              "WhenOpened": "2025-01-19T21:06:30.478Z",
               "EditorCaption": ""
             }
           ]
