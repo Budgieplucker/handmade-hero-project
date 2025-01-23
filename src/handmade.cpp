@@ -5,52 +5,59 @@
 #define internal            static 
 
 global_variable bool Running;
-global_variable BITMAPINFO BitmapInfo;
-global_variable void* BitmapMemory;
-global_variable HBITMAP BitmapHandle;
-global_variable HDC BitmapDeviceContext;
+
+typedef struct {
+    BITMAPINFO BitmapInfo;
+    void* BitmapMemory;
+    HBITMAP BitmapHandle;
+    HDC BitmapDeviceContext;
+    int BitmapWidth;
+    int BitmapHeight;
+} OffscreenBuffer;
+
+global_variable OffscreenBuffer GlobalOffscreenBuffer;
 
 internal void
-Win32ResizeDIBSection(int Width, int Height)
+Win32ResizeDIBSection(OffscreenBuffer* Buffer, int Width, int Height)
 {
-    if(BitmapHandle)
+    if(Buffer->BitmapHandle)
     {
-        DeleteObject(BitmapHandle);
+        DeleteObject(Buffer->BitmapHandle);
     }
-    if(!BitmapDeviceContext)
+    if(!Buffer->BitmapDeviceContext)
     {
-        BitmapDeviceContext = CreateCompatibleDC(0);
+        Buffer->BitmapDeviceContext = CreateCompatibleDC(0);
     }
 
-    BitmapInfo.bmiHeader.biSize = sizeof(BitmapInfo.bmiHeader);
-    BitmapInfo.bmiHeader.biWidth = Width;
-    BitmapInfo.bmiHeader.biHeight = Height;
-    BitmapInfo.bmiHeader.biPlanes = 1;
-    BitmapInfo.bmiHeader.biBitCount = 32;
-    BitmapInfo.bmiHeader.biCompression = BI_RGB;
-    BitmapInfo.bmiHeader.biSizeImage = 0;
-    BitmapInfo.bmiHeader.biXPelsPerMeter = 0;
-    BitmapInfo.bmiHeader.biYPelsPerMeter = 0;
-    BitmapInfo.bmiHeader.biClrUsed = 0;
-    BitmapInfo.bmiHeader.biClrImportant = 0;
+    Buffer->BitmapInfo.bmiHeader.biSize = sizeof(Buffer->BitmapInfo.bmiHeader);
+    Buffer->BitmapInfo.bmiHeader.biWidth = Width;
+    Buffer->BitmapInfo.bmiHeader.biHeight = Height;
+    Buffer->BitmapInfo.bmiHeader.biPlanes = 1;
+    Buffer->BitmapInfo.bmiHeader.biBitCount = 32;
+    Buffer->BitmapInfo.bmiHeader.biCompression = BI_RGB;
+    Buffer->BitmapInfo.bmiHeader.biSizeImage = 0;
+    Buffer->BitmapInfo.bmiHeader.biXPelsPerMeter = 0;
+    Buffer->BitmapInfo.bmiHeader.biYPelsPerMeter = 0;
+    Buffer->BitmapInfo.bmiHeader.biClrUsed = 0;
+    Buffer->BitmapInfo.bmiHeader.biClrImportant = 0;
 
-    BitmapDeviceContext = CreateCompatibleDC(0);
+    Buffer->BitmapDeviceContext = CreateCompatibleDC(0);
 
-    BitmapHandle = CreateDIBSection (
-        BitmapDeviceContext, &BitmapInfo, DIB_RGB_COLORS,
-        &BitmapMemory,
+    Buffer->BitmapHandle = CreateDIBSection (
+        Buffer->BitmapDeviceContext, &Buffer->BitmapInfo, DIB_RGB_COLORS,
+        &Buffer->BitmapMemory,
         0, 0
     );
 }
 
 internal void
-Win32UpdateWindow(HDC DeviceContext, int X, int Y, int Width, int Height)
+Win32UpdateWindow(HDC DeviceContext, OffscreenBuffer Buffer, int X, int Y, int Width, int Height)
 {
     StretchDIBits (
         DeviceContext, X, Y, Width, Height,
         X, Y, Width, Height,
-        BitmapMemory,
-        &BitmapInfo,
+        Buffer.BitmapMemory,
+        &Buffer.BitmapInfo,
         DIB_RGB_COLORS, SRCCOPY
     );
 }
@@ -73,7 +80,7 @@ LRESULT CALLBACK MainWindowCallback(
             GetClientRect(Window, &ClientRect);
             int Width = ClientRect.right - ClientRect.left;
             int Height = ClientRect.bottom - ClientRect.top;
-            Win32ResizeDIBSection(Width, Height);
+            Win32ResizeDIBSection(&GlobalOffscreenBuffer, Width, Height);
             OutputDebugStringA("WM_SIZE\n");
         } break;
         
@@ -103,8 +110,8 @@ LRESULT CALLBACK MainWindowCallback(
             int Width = Paint.rcPaint.right - Paint.rcPaint.left;
             int Height = Paint.rcPaint.bottom - Paint.rcPaint.top;
 
-            Win32ResizeDIBSection(Width, Height);
-            Win32UpdateWindow(DeviceContext, X, Y, Width, Height);
+            Win32ResizeDIBSection(&GlobalOffscreenBuffer, Width, Height);
+            Win32UpdateWindow(DeviceContext, GlobalOffscreenBuffer, X, Y, Width, Height);
 
             EndPaint(Window, &Paint);
         } break;
